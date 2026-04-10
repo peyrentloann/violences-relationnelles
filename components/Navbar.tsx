@@ -48,7 +48,7 @@ export default function Navbar() {
               href={item.href}
               className={`px-2 py-1 text-xs rounded transition-colors font-medium ${
                 item.href === '#ressources'
-                  ? 'bg-[#D32F2F] text-white hover:bg-red-700'
+                  ? 'bg-[#3D6B4F] text-white hover:bg-[#5B8C6A]'
                   : active === item.href.replace('#', '')
                   ? 'bg-[#E8F5E9] text-[#3D6B4F]'
                   : 'text-[#2D2D2D] hover:text-[#3D6B4F] hover:bg-[#E8F5E9]'
@@ -59,26 +59,27 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Mobile */}
+        {/* Mobile — bouton hamburger */}
         <button
-          className="lg:hidden p-2 text-[#3D6B4F]"
+          className="lg:hidden p-3 -mr-2 text-[#3D6B4F]"
           onClick={() => setOpen(!open)}
-          aria-label="Menu"
+          aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
         >
-          {open ? <X size={20} /> : <Menu size={20} />}
+          {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
+      {/* Mobile menu */}
       {open && (
-        <div className="lg:hidden bg-white border-t border-[#A8D5B5] px-4 py-3 flex flex-col gap-2">
+        <div className="lg:hidden bg-white border-t border-[#A8D5B5] px-4 py-3 flex flex-col gap-1">
           {navItems.map(item => (
             <a
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className={`px-3 py-2 rounded text-sm font-medium transition-colors ${
+              className={`px-4 py-3 rounded-xl text-base font-medium transition-colors ${
                 item.href === '#ressources'
-                  ? 'bg-[#D32F2F] text-white'
+                  ? 'bg-[#3D6B4F] text-white'
                   : 'text-[#2D2D2D] hover:bg-[#E8F5E9] hover:text-[#3D6B4F]'
               }`}
             >
@@ -87,9 +88,9 @@ export default function Navbar() {
           ))}
           <a
             href="tel:18003639010"
-            className="flex items-center gap-2 px-3 py-2 bg-[#E8F5E9] text-[#3D6B4F] rounded text-sm font-bold mt-1"
+            className="flex items-center justify-center gap-2 px-4 py-3 bg-[#E8F5E9] text-[#3D6B4F] rounded-xl text-base font-bold mt-2 border border-[#A8D5B5]"
           >
-            <Phone size={14} /> 1 800-363-9010
+            <Phone size={16} /> 1 800-363-9010
           </a>
         </div>
       )}

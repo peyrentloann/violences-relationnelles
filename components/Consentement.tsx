@@ -29,40 +29,38 @@ export default function Consentement() {
   const someChecked = checked.size > 0;
 
   return (
-    <section id="consentement" className="py-16 px-4 bg-white">
-      <div className="max-w-3xl mx-auto">
-        <h2 className="text-3xl font-bold text-[#3D6B4F] text-center mb-3">
+    <section id="consentement" className="py-14 px-4 bg-white">
+      <div className="max-w-xl mx-auto">
+        <h2 className="text-2xl font-bold text-[#3D6B4F] text-center mb-2">
           Le Consentement
         </h2>
-        <p className="text-center text-sm text-[#2D2D2D] mb-8">
+        <p className="text-center text-sm text-[#2D2D2D] mb-6">
           Coche les critères qui s'appliquent à ta situation
         </p>
 
-        <div className="space-y-3 mb-8">
+        <div className="space-y-2 mb-6">
           {criteres.map((critere, i) => {
             const isChecked = checked.has(i);
             return (
               <button
                 key={i}
                 onClick={() => toggle(i)}
-                className={`w-full text-left flex items-start gap-4 p-4 rounded-xl border transition-all ${
+                className={`w-full text-left flex items-start gap-4 p-4 rounded-2xl border transition-all ${
                   isChecked
                     ? 'border-[#4CAF50] bg-green-50'
-                    : 'border-[#A8D5B5] bg-white hover:border-[#5B8C6A] hover:bg-[#E8F5E9]'
+                    : 'border-[#A8D5B5] bg-white'
                 }`}
                 aria-pressed={isChecked}
               >
                 <div
-                  className={`w-6 h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 mt-0.5 transition-all ${
-                    isChecked
-                      ? 'bg-[#4CAF50] border-[#4CAF50]'
-                      : 'border-[#A8D5B5]'
+                  className={`w-7 h-7 rounded-full border-2 flex items-center justify-center flex-shrink-0 mt-0.5 transition-all ${
+                    isChecked ? 'bg-[#4CAF50] border-[#4CAF50]' : 'border-[#A8D5B5]'
                   }`}
                   aria-hidden
                 >
-                  {isChecked && <Check size={12} className="text-white" strokeWidth={3} />}
+                  {isChecked && <Check size={13} className="text-white" strokeWidth={3} />}
                 </div>
-                <span className={`text-sm ${isChecked ? 'text-[#2D5C38]' : 'text-[#2D2D2D]'}`}>
+                <span className={`text-base leading-snug ${isChecked ? 'text-[#2D5C38]' : 'text-[#2D2D2D]'}`}>
                   {critere}
                 </span>
               </button>
@@ -72,19 +70,15 @@ export default function Consentement() {
 
         {/* Message contextuel */}
         {someChecked && (
-          <div
-            className={`rounded-xl p-5 border-2 ${
-              allChecked
-                ? 'bg-green-50 border-[#4CAF50]'
-                : 'bg-orange-50 border-[#F57C00]'
-            }`}
-          >
+          <div className={`rounded-2xl p-5 border-2 mb-4 ${
+            allChecked ? 'bg-green-50 border-[#4CAF50]' : 'bg-[#E8F5E9] border-[#5B8C6A]'
+          }`}>
             {allChecked ? (
-              <p className="text-[#2D5C38] font-medium">
+              <p className="text-[#2D5C38] font-medium text-base">
                 Tous les critères sont cochés — les conditions du consentement semblent réunies.
               </p>
             ) : (
-              <p className="text-[#7A3B00] font-medium">
+              <p className="text-[#3D6B4F] font-medium text-base">
                 Certains critères ne sont pas cochés. Prends le temps de les relire — ils peuvent être des points d'attention importants.
               </p>
             )}
@@ -92,8 +86,8 @@ export default function Consentement() {
         )}
 
         {/* Message important */}
-        <div className="mt-6 border-2 border-[#3D6B4F] rounded-xl p-5 bg-[#E8F5E9]">
-          <p className="text-[#3D6B4F] font-bold text-center">
+        <div className="border-2 border-[#3D6B4F] rounded-2xl p-5 bg-[#E8F5E9]">
+          <p className="text-[#3D6B4F] font-bold text-base text-center">
             Le consentement peut être retiré à n'importe quel moment, de manière verbale ou non verbale !!
           </p>
         </div>

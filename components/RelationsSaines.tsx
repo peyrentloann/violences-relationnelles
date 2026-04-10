@@ -15,27 +15,27 @@ const caracteristiques = [
 
 export default function RelationsSaines() {
   return (
-    <section id="saines" className="py-16 px-4 bg-[#E8F5E9]">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold text-[#3D6B4F] text-center mb-3">
+    <section id="saines" className="py-14 px-4 bg-[#E8F5E9]">
+      <div className="max-w-xl mx-auto">
+        <h2 className="text-2xl font-bold text-[#3D6B4F] text-center mb-2">
           Relations Saines
         </h2>
-        <p className="text-center text-sm text-[#5B8C6A] mb-10">
+        <p className="text-center text-sm text-[#5B8C6A] mb-6">
           Une relation saine, ça ressemble à ça ✓
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="flex flex-col gap-2">
           {caracteristiques.map((item, i) => {
             const Icon = item.icon;
             return (
               <div
                 key={i}
-                className="bg-white rounded-xl p-5 flex items-center gap-4 border border-[#A8D5B5] shadow-sm"
+                className="bg-white rounded-2xl px-4 py-3.5 flex items-center gap-4 border border-[#A8D5B5]"
               >
                 <div className="w-10 h-10 bg-[#A8D5B5] rounded-full flex items-center justify-center flex-shrink-0">
                   <Icon size={18} className="text-[#3D6B4F]" aria-hidden />
                 </div>
-                <span className="font-medium text-[#2D2D2D] text-sm">{item.label}</span>
+                <span className="font-medium text-[#2D2D2D] text-base">{item.label}</span>
               </div>
             );
           })}

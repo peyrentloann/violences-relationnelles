@@ -73,34 +73,34 @@ export default function Violentometre() {
   const [activeItem, setActiveItem] = useState<number | null>(null);
 
   return (
-    <section id="violentometre" className="py-16 px-4 bg-[#E8F5E9]">
-      <div className="max-w-3xl mx-auto">
-        <h2 className="text-3xl font-bold text-[#3D6B4F] text-center mb-3">
+    <section id="violentometre" className="py-14 px-4 bg-[#E8F5E9]">
+      <div className="max-w-xl mx-auto">
+        <h2 className="text-2xl font-bold text-[#3D6B4F] text-center mb-2">
           Le Violentomètre
         </h2>
-        <p className="text-center text-sm text-[#2D2D2D] mb-8">
-          Clique sur un item pour le mettre en surbrillance
+        <p className="text-center text-sm text-[#2D2D2D] mb-6">
+          Appuie sur un item pour le mettre en surbrillance
         </p>
 
-        <div className="flex gap-4">
+        <div className="flex gap-3">
           {/* Thermomètre vertical */}
-          <div className="flex-shrink-0 flex flex-col items-center">
-            <div className="w-6 h-4 bg-[#D32F2F] rounded-t-full" />
-            <div className="w-4 flex-1 flex flex-col">
-              <div className="flex-1 bg-[#D32F2F]" style={{ flex: 10 }} />
-              <div className="flex-1 bg-[#F57C00]" style={{ flex: 8 }} />
-              <div className="flex-1 bg-[#4CAF50]" style={{ flex: 5 }} />
+          <div className="flex-shrink-0 flex flex-col items-center w-5">
+            <div className="w-5 h-3 bg-[#D32F2F] rounded-t-full" />
+            <div className="w-3 flex-1 flex flex-col">
+              <div className="bg-[#D32F2F]" style={{ flex: 10 }} />
+              <div className="bg-[#F57C00]" style={{ flex: 8 }} />
+              <div className="bg-[#4CAF50]" style={{ flex: 5 }} />
             </div>
-            <div className="w-8 h-8 rounded-full bg-[#4CAF50] border-2 border-white shadow" />
+            <div className="w-6 h-6 rounded-full bg-[#4CAF50] border-2 border-white shadow" />
           </div>
 
           {/* Items */}
-          <div className="flex-1 space-y-2">
+          <div className="flex-1">
             {zones.map(zone => (
               <div key={zone.key} className="mb-4">
-                <div className={`text-white rounded-lg px-4 py-2 mb-2 ${zoneConfig[zone.key].badge}`}>
+                <div className={`text-white rounded-xl px-4 py-3 mb-2 ${zoneConfig[zone.key].badge}`}>
                   <p className="font-bold text-sm">{zone.title}</p>
-                  <p className="text-xs opacity-90">{zone.subtitle}</p>
+                  <p className="text-xs opacity-90 mt-0.5">{zone.subtitle}</p>
                 </div>
                 {items
                   .filter(item => item.zone === zone.key)
@@ -111,16 +111,16 @@ export default function Violentometre() {
                       <button
                         key={item.num}
                         onClick={() => setActiveItem(isActive ? null : item.num)}
-                        className={`w-full text-left flex items-start gap-3 px-4 py-2.5 rounded-lg border mb-1 transition-all text-sm ${
+                        className={`w-full text-left flex items-start gap-3 px-3 py-3 rounded-xl border mb-1.5 transition-all text-sm ${
                           isActive
                             ? `${cfg.activeBg} ${cfg.activeBorder} shadow-sm`
-                            : `${cfg.bg} ${cfg.border} hover:${cfg.activeBg}`
+                            : `${cfg.bg} ${cfg.border}`
                         }`}
                       >
-                        <span className={`w-5 h-5 rounded-full ${cfg.badge} text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5`}>
+                        <span className={`w-6 h-6 rounded-full ${cfg.badge} text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5`}>
                           {item.num}
                         </span>
-                        <span className="text-[#2D2D2D]">{item.text}</span>
+                        <span className="text-[#2D2D2D] text-base leading-snug">{item.text}</span>
                       </button>
                     );
                   })}
