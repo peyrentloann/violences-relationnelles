@@ -27,6 +27,7 @@ export default function VoxPop() {
               <video
                 className="absolute inset-0 w-full h-full object-cover"
                 src="/generated-video-1.mp4"
+                poster="/voxpop-poster.jpg"
                 controls
                 playsInline
               />
