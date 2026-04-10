@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Check } from 'lucide-react';
+import FadeIn from './FadeIn';
 
 const criteres = [
   "Je n'ai pas peur des conséquences si je dis non.",
@@ -31,12 +32,14 @@ export default function Consentement() {
   return (
     <section id="consentement" className="py-14 px-4 bg-white">
       <div className="max-w-xl mx-auto">
-        <h2 className="text-2xl font-bold text-[#3D6B4F] text-center mb-2">
-          Le Consentement
-        </h2>
-        <p className="text-center text-sm text-[#2D2D2D] mb-6">
-          Coche les critères qui s'appliquent à ta situation
-        </p>
+        <FadeIn>
+          <h2 className="text-2xl font-bold text-[#3D6B4F] text-center mb-2">
+            Le Consentement
+          </h2>
+          <p className="text-center text-sm text-[#2D2D2D] mb-6">
+            Coche les critères qui s'appliquent à ta situation
+          </p>
+        </FadeIn>
 
         <div className="space-y-2 mb-6">
           {criteres.map((critere, i) => {

@@ -1,16 +1,18 @@
-import { Heart, MessageCircle, ShieldCheck, Unlock, Scale, HandHeart, Shield, Handshake, Sparkles, CheckCircle } from 'lucide-react';
+import FadeIn from './FadeIn';
 
-const caracteristiques = [
-  { icon: Heart, label: 'Respect mutuel' },
-  { icon: MessageCircle, label: 'Communication ouverte et honnête' },
-  { icon: ShieldCheck, label: 'Confiance et loyauté' },
-  { icon: Unlock, label: 'Indépendance et autonomie' },
-  { icon: Scale, label: 'Égalité et réciprocité' },
-  { icon: HandHeart, label: 'Soutien et encouragement' },
-  { icon: Shield, label: 'Sécurité émotionnelle et physique' },
-  { icon: Handshake, label: 'Gestion respectueuse des conflits' },
-  { icon: Sparkles, label: 'Affection et intimité' },
-  { icon: CheckCircle, label: 'Consentement et respect' },
+const bulles = [
+  { label: 'Respect mutuel', size: 'text-base', px: 'px-5', py: 'py-3', bg: 'bg-[#3D6B4F]', text: 'text-white' },
+  { label: 'Communication ouverte', size: 'text-sm', px: 'px-4', py: 'py-2.5', bg: 'bg-[#A8D5B5]', text: 'text-[#2D5C38]' },
+  { label: 'Confiance', size: 'text-lg', px: 'px-6', py: 'py-3.5', bg: 'bg-[#5B8C6A]', text: 'text-white' },
+  { label: 'Indépendance et autonomie', size: 'text-sm', px: 'px-4', py: 'py-2.5', bg: 'bg-white', text: 'text-[#3D6B4F]', border: 'border-2 border-[#A8D5B5]' },
+  { label: 'Égalité', size: 'text-base', px: 'px-5', py: 'py-3', bg: 'bg-[#A8D5B5]', text: 'text-[#2D5C38]' },
+  { label: 'Soutien', size: 'text-xl', px: 'px-7', py: 'py-4', bg: 'bg-[#3D6B4F]', text: 'text-white' },
+  { label: 'Loyauté', size: 'text-sm', px: 'px-4', py: 'py-2.5', bg: 'bg-white', text: 'text-[#3D6B4F]', border: 'border-2 border-[#5B8C6A]' },
+  { label: 'Sécurité émotionnelle', size: 'text-sm', px: 'px-4', py: 'py-2.5', bg: 'bg-[#5B8C6A]', text: 'text-white' },
+  { label: 'Encouragement', size: 'text-base', px: 'px-5', py: 'py-3', bg: 'bg-[#A8D5B5]', text: 'text-[#2D5C38]' },
+  { label: 'Consentement', size: 'text-lg', px: 'px-6', py: 'py-3.5', bg: 'bg-white', text: 'text-[#3D6B4F]', border: 'border-2 border-[#3D6B4F]' },
+  { label: 'Gestion des conflits', size: 'text-sm', px: 'px-4', py: 'py-2.5', bg: 'bg-[#3D6B4F]', text: 'text-white' },
+  { label: 'Affection', size: 'text-base', px: 'px-5', py: 'py-3', bg: 'bg-[#A8D5B5]', text: 'text-[#2D5C38]' },
 ];
 
 export default function RelationsSaines() {
@@ -20,25 +22,21 @@ export default function RelationsSaines() {
         <h2 className="text-2xl font-bold text-[#3D6B4F] text-center mb-2">
           Relations Saines
         </h2>
-        <p className="text-center text-sm text-[#5B8C6A] mb-6">
-          Une relation saine, ça ressemble à ça ✓
+        <p className="text-center text-sm text-[#5B8C6A] mb-10">
+          Une relation saine, ça ressemble à ça
         </p>
 
-        <div className="flex flex-col gap-2">
-          {caracteristiques.map((item, i) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={i}
-                className="bg-white rounded-2xl px-4 py-3.5 flex items-center gap-4 border border-[#A8D5B5]"
+        {/* Nuage de bulles */}
+        <div className="flex flex-wrap justify-center gap-3">
+          {bulles.map((b, i) => (
+            <FadeIn key={i} delay={i * 50} direction="none">
+              <span
+                className={`rounded-full font-semibold ${b.size} ${b.px} ${b.py} ${b.bg} ${b.text} ${'border' in b ? b.border : ''} shadow-sm`}
               >
-                <div className="w-10 h-10 bg-[#A8D5B5] rounded-full flex items-center justify-center flex-shrink-0">
-                  <Icon size={18} className="text-[#3D6B4F]" aria-hidden />
-                </div>
-                <span className="font-medium text-[#2D2D2D] text-base">{item.label}</span>
-              </div>
-            );
-          })}
+                {b.label}
+              </span>
+            </FadeIn>
+          ))}
         </div>
       </div>
     </section>

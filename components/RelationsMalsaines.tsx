@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import FadeIn from './FadeIn';
 
 const signes = [
   {
@@ -42,14 +43,17 @@ export default function RelationsMalsaines() {
   return (
     <section id="malsaines" className="py-14 px-4 bg-white">
       <div className="max-w-xl mx-auto">
-        <h2 className="text-2xl font-bold text-[#3D6B4F] text-center mb-8">
-          Relations Malsaines
-        </h2>
+        <FadeIn>
+          <h2 className="text-2xl font-bold text-[#3D6B4F] text-center mb-8">
+            Relations Malsaines
+          </h2>
+        </FadeIn>
 
         {/* Accordion signes */}
         <div className="space-y-2 mb-10">
           {signes.map((signe, i) => (
-            <div key={i} className="border border-[#A8D5B5] rounded-2xl overflow-hidden">
+            <FadeIn key={i} delay={i * 70}>
+            <div className="border border-[#A8D5B5] rounded-2xl overflow-hidden">
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-[#E8F5E9] transition-colors"
@@ -68,10 +72,12 @@ export default function RelationsMalsaines() {
                 </div>
               )}
             </div>
+            </FadeIn>
           ))}
         </div>
 
         {/* Conséquences */}
+        <FadeIn delay={100}>
         <div className="bg-[#3D6B4F] rounded-2xl p-6">
           <h3 className="text-lg font-bold text-white mb-4">
             Conséquences des relations malsaines
@@ -85,6 +91,7 @@ export default function RelationsMalsaines() {
             ))}
           </ul>
         </div>
+        </FadeIn>
       </div>
     </section>
   );

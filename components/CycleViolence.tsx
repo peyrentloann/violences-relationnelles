@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import FadeIn from './FadeIn';
 
 const phases = [
   {
@@ -42,14 +43,17 @@ export default function CycleViolence() {
   return (
     <section id="cycle" className="py-14 px-4 bg-[#E8F5E9]">
       <div className="max-w-xl mx-auto">
-        <h2 className="text-2xl font-bold text-[#3D6B4F] text-center mb-2">
-          Le Cycle de la Violence
-        </h2>
-        <p className="text-center text-sm text-[#2D2D2D] mb-6">
-          Appuie sur chaque phase pour en savoir plus
-        </p>
+        <FadeIn>
+          <h2 className="text-2xl font-bold text-[#3D6B4F] text-center mb-2">
+            Le Cycle de la Violence
+          </h2>
+          <p className="text-center text-sm text-[#2D2D2D] mb-6">
+            Appuie sur chaque phase pour en savoir plus
+          </p>
+        </FadeIn>
 
         {/* Diagramme SVG centré */}
+        <FadeIn delay={150}>
         <div className="flex justify-center mb-4">
           <svg viewBox="0 0 280 280" className="w-56" aria-label="Cycle de la violence">
             <circle cx={cx} cy={cy} r={r} fill="none" stroke="#A8D5B5" strokeWidth="18" />
@@ -77,6 +81,7 @@ export default function CycleViolence() {
             <text x={cx} y={cy + 7} textAnchor="middle" fill="#3D6B4F" fontSize="9">de violence</text>
           </svg>
         </div>
+        </FadeIn>
 
         {/* Description phase active */}
         {active !== null ? (

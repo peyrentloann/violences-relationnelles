@@ -1,4 +1,5 @@
 import { Phone, Globe } from 'lucide-react';
+import FadeIn from './FadeIn';
 
 const ressources = [
   {
@@ -37,7 +38,8 @@ export default function Ressources() {
 
         <div className="flex flex-col gap-4">
           {ressources.map((r, i) => (
-            <div key={i} className="bg-white rounded-2xl p-5 flex flex-col gap-3">
+            <FadeIn key={i} delay={i * 100}>
+            <div className="bg-white rounded-2xl p-5 flex flex-col gap-3">
               <div>
                 <h3 className="font-bold text-[#3D6B4F] text-base mb-1">{r.nom}</h3>
                 <p className="text-sm text-[#2D2D2D]">{r.detail}</p>
@@ -61,6 +63,7 @@ export default function Ressources() {
                 </a>
               </div>
             </div>
+            </FadeIn>
           ))}
         </div>
       </div>

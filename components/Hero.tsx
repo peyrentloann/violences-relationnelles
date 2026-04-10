@@ -1,48 +1,82 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import { ChevronDown } from 'lucide-react';
+
+const keywords = ['Psychologique', 'Physique', 'Verbale', 'Sexuelle', 'Administrative', 'Économique'];
+
 export default function Hero() {
-  const keywords = ['Psychologique', 'Physique', 'Verbale', 'Sexuelle', 'Administrative', 'Économique'];
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setVisible(true), 100);
+    return () => clearTimeout(t);
+  }, []);
 
   return (
-    <section className="bg-gradient-to-b from-[#A8D5B5] to-[#E8F5E9] py-16 px-6 text-center">
-      <h1 className="text-3xl font-bold text-[#3D6B4F] mb-6 leading-tight">
-        Les Violences<br />Relationnelles
-      </h1>
+    <section className="relative min-h-[92dvh] flex flex-col items-center justify-center px-6 overflow-hidden bg-[#3D6B4F]">
 
-      {/* Silhouettes SVG */}
-      <div className="flex justify-center my-6">
-        <svg
-          viewBox="0 0 280 120"
-          className="w-56"
-          aria-label="Groupe de personnes diversifiées"
+      {/* Cercles décoratifs */}
+      <div className="absolute top-[-80px] right-[-80px] w-64 h-64 rounded-full bg-[#5B8C6A] opacity-40" />
+      <div className="absolute bottom-[-60px] left-[-60px] w-48 h-48 rounded-full bg-[#2A5038] opacity-50" />
+      <div className="absolute top-1/2 left-[-40px] w-32 h-32 rounded-full bg-[#5B8C6A] opacity-20" />
+
+      {/* Contenu */}
+      <div
+        className={`relative z-10 text-center transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+      >
+        {/* Badge */}
+        <span className="inline-block bg-[#A8D5B5] text-[#2A5038] text-xs font-bold px-4 py-1.5 rounded-full mb-6 uppercase tracking-widest">
+          Projet de fin d'études
+        </span>
+
+        {/* Titre */}
+        <h1 className="text-4xl font-black text-white leading-tight mb-3">
+          Les Violences<br />
+          <span className="text-[#A8D5B5]">Relationnelles</span>
+        </h1>
+
+        <p className="text-[#A8D5B5] text-base mb-10 max-w-xs mx-auto leading-relaxed">
+          Reconnais, comprends, agis. Un guide interactif pour mieux identifier les violences dans les relations.
+        </p>
+
+        {/* Keywords */}
+        <div
+          className={`flex flex-wrap justify-center gap-2 mb-10 max-w-sm mx-auto transition-all duration-700 delay-300 ${visible ? 'opacity-100' : 'opacity-0'}`}
         >
-          {[20, 60, 100, 140, 180, 220].map((x, i) => (
-            <g key={i} transform={`translate(${x}, 8)`}>
-              <circle cx="20" cy="16" r="9" fill="#5B8C6A" opacity={0.65 + i * 0.05} />
-              <rect x="13" y="27" width="14" height={26 + (i % 3) * 4} rx="4" fill="#5B8C6A" opacity={0.65 + i * 0.05} />
-              <line x1="13" y1="34" x2="4" y2="48" stroke="#5B8C6A" strokeWidth="3.5" strokeLinecap="round" opacity={0.65 + i * 0.05} />
-              <line x1="27" y1="34" x2="36" y2="48" stroke="#5B8C6A" strokeWidth="3.5" strokeLinecap="round" opacity={0.65 + i * 0.05} />
-            </g>
+          {keywords.map((kw, i) => (
+            <span
+              key={kw}
+              style={{ transitionDelay: `${300 + i * 80}ms` }}
+              className={`bg-white/10 backdrop-blur-sm text-white border border-white/20 px-4 py-2 rounded-full text-sm font-medium transition-all duration-500 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}
+            >
+              {kw}
+            </span>
           ))}
+        </div>
+
+        {/* CTA */}
+        <a
+          href="#types"
+          className="inline-flex flex-col items-center gap-2 group"
+        >
+          <span className="bg-white text-[#3D6B4F] px-10 py-4 rounded-full font-bold text-lg shadow-xl group-hover:bg-[#A8D5B5] transition-colors">
+            Explorer
+          </span>
+          <ChevronDown
+            size={20}
+            className="text-white/60 animate-bounce mt-1"
+            aria-hidden
+          />
+        </a>
+      </div>
+
+      {/* Vague du bas */}
+      <div className="absolute bottom-0 left-0 right-0">
+        <svg viewBox="0 0 375 40" preserveAspectRatio="none" className="w-full h-10 fill-white">
+          <path d="M0,40 C100,0 275,40 375,10 L375,40 Z" />
         </svg>
       </div>
-
-      {/* Keywords */}
-      <div className="flex flex-wrap justify-center gap-2 mb-10 max-w-sm mx-auto">
-        {keywords.map(kw => (
-          <span
-            key={kw}
-            className="bg-white text-[#3D6B4F] border border-[#5B8C6A] px-4 py-2 rounded-full text-sm font-medium shadow-sm"
-          >
-            {kw}
-          </span>
-        ))}
-      </div>
-
-      <a
-        href="#types"
-        className="inline-block w-full max-w-xs bg-[#3D6B4F] text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#5B8C6A] transition-colors shadow-md"
-      >
-        Explorer
-      </a>
     </section>
   );
 }

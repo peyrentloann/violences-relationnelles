@@ -7,6 +7,7 @@ import Violentometre from '@/components/Violentometre';
 import Consentement from '@/components/Consentement';
 import AutoEvaluation from '@/components/AutoEvaluation';
 import RelationsSaines from '@/components/RelationsSaines';
+import VoxPop from '@/components/VoxPop';
 import ControleCoercitif from '@/components/ControleCoercitif';
 import Ressources from '@/components/Ressources';
 import Footer from '@/components/Footer';
@@ -24,6 +25,7 @@ export default function Page() {
         <Consentement />
         <AutoEvaluation />
         <RelationsSaines />
+        <VoxPop />
         <ControleCoercitif />
         <Ressources />
       </main>

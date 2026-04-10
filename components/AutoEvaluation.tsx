@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import FadeIn from './FadeIn';
 
 const questions = [
   'Est-ce que je me sens respecté·e ?',
@@ -40,12 +41,14 @@ export default function AutoEvaluation() {
   return (
     <section id="evaluation" className="py-14 px-4 bg-[#E8F5E9]">
       <div className="max-w-xl mx-auto">
-        <h2 className="text-2xl font-bold text-[#3D6B4F] text-center mb-2">
-          Questions à te poser
-        </h2>
-        <p className="text-center text-sm text-[#2D2D2D] mb-6">
-          En cas de doute, voici des questions à te poser...
-        </p>
+        <FadeIn>
+          <h2 className="text-2xl font-bold text-[#3D6B4F] text-center mb-2">
+            Questions à te poser
+          </h2>
+          <p className="text-center text-sm text-[#2D2D2D] mb-6">
+            En cas de doute, voici des questions à te poser...
+          </p>
+        </FadeIn>
 
         {/* Barre de progression */}
         <div className="w-full bg-[#A8D5B5] rounded-full h-2 mb-6">
