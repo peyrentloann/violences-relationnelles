@@ -16,14 +16,18 @@ const items = [
 
 export default function RelationsSaines() {
   return (
-    <section id="saines" className="py-14 px-4 bg-[#3D6B4F]">
+    <section id="saines" className="py-14 px-4 bg-white">
       <div className="max-w-xl mx-auto">
         <FadeIn>
-          <h2 className="text-2xl font-black text-white text-center mb-1">
-            Relations Saines
+          <p className="text-center text-xs font-bold tracking-[0.2em] uppercase text-[#5B8C6A] mb-3">
+            À quoi ça ressemble
+          </p>
+          <h2 className="text-4xl font-black text-[#3D6B4F] text-center leading-tight mb-2">
+            Une relation<br />
+            <span className="text-[#5B8C6A]">saine</span>
           </h2>
-          <p className="text-center text-[#A8D5B5] text-sm mb-10">
-            Une relation saine, ça ressemble à ça ✓
+          <p className="text-center text-sm text-[#5B8C6A] mb-10">
+            Ces piliers sont présents dans une relation équilibrée ✓
           </p>
         </FadeIn>
 
@@ -32,13 +36,13 @@ export default function RelationsSaines() {
             const Icon = item.icon;
             return (
               <FadeIn key={i} delay={i * 60} direction="left">
-                <div className="flex items-start gap-4 bg-white/10 backdrop-blur-sm rounded-2xl px-5 py-4 border border-white/20">
-                  <div className="w-10 h-10 rounded-xl bg-[#A8D5B5]/20 border border-[#A8D5B5]/40 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Icon size={18} className="text-[#A8D5B5]" aria-hidden />
+                <div className="flex items-start gap-4 bg-[#E8F5E9] rounded-2xl px-5 py-4 border border-[#A8D5B5]">
+                  <div className="w-10 h-10 rounded-xl bg-[#3D6B4F] flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Icon size={18} className="text-white" aria-hidden />
                   </div>
                   <div>
-                    <p className="font-bold text-white text-base">{item.label}</p>
-                    <p className="text-[#A8D5B5] text-sm mt-0.5 leading-snug">{item.desc}</p>
+                    <p className="font-bold text-[#3D6B4F] text-base">{item.label}</p>
+                    <p className="text-[#5B8C6A] text-sm mt-0.5 leading-snug">{item.desc}</p>
                   </div>
                 </div>
               </FadeIn>
