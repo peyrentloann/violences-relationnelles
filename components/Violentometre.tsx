@@ -81,7 +81,7 @@ export default function Violentometre() {
   const [activeItem, setActiveItem] = useState<number | null>(null);
 
   const zone = zones.find(z => z.key === activeZone)!;
-  const zoneItems = items.filter(i => i.zone === activeZone);
+  const zoneItems = items.filter(i => i.zone === activeZone).sort((a, b) => a.num - b.num);
 
   const handleZoneChange = (key: Zone) => {
     setActiveZone(key);
