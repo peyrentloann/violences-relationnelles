@@ -1,14 +1,15 @@
 'use client';
 
 import { useState } from 'react';
+import { ThumbsUp, ThumbsDown, RotateCcw, ArrowRight } from 'lucide-react';
 import FadeIn from './FadeIn';
 
 const questions = [
-  'Est-ce que je me sens respecté·e ?',
-  "Est-ce que je peux m'affirmer sans avoir peur ?",
-  'Est-ce que je me sens libre ?',
-  "Est-ce que je conseillerais ma relation à un·e ami·e ?",
-  'Est-ce que mon partenaire me respecte ?',
+  { text: 'Je me sens respecté·e dans cette relation.', emoji: '🤝' },
+  { text: 'Je peux m\'affirmer sans avoir peur des réactions.', emoji: '💬' },
+  { text: 'Je me sens libre de mes choix et de mes amis.', emoji: '🕊️' },
+  { text: 'Je conseillerais ma relation à un·e ami·e.', emoji: '💛' },
+  { text: 'Mon partenaire me respecte tel·le que je suis.', emoji: '🌱' },
 ];
 
 type Answers = (boolean | null)[];
@@ -17,16 +18,21 @@ export default function AutoEvaluation() {
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState<Answers>(Array(questions.length).fill(null));
   const [done, setDone] = useState(false);
+  const [exiting, setExiting] = useState(false);
 
   const answer = (val: boolean) => {
     const next = [...answers];
     next[current] = val;
     setAnswers(next);
-    if (current < questions.length - 1) {
-      setCurrent(current + 1);
-    } else {
-      setDone(true);
-    }
+    setExiting(true);
+    setTimeout(() => {
+      setExiting(false);
+      if (current < questions.length - 1) {
+        setCurrent(current + 1);
+      } else {
+        setDone(true);
+      }
+    }, 300);
   };
 
   const reset = () => {
@@ -35,108 +41,146 @@ export default function AutoEvaluation() {
     setDone(false);
   };
 
+  const score = answers.filter(a => a === true).length;
   const hasNon = answers.some(a => a === false);
-  const progress = done ? 100 : (current / questions.length) * 100;
 
   return (
-    <section id="evaluation" className="py-14 px-4 bg-[#E8F5E9]">
+    <section id="evaluation" className="py-14 px-4 bg-[#3D6B4F]">
       <div className="max-w-xl mx-auto">
         <FadeIn>
-          <h2 className="text-2xl font-bold text-[#3D6B4F] text-center mb-2">
+          <p className="text-center text-xs font-bold tracking-[0.2em] uppercase text-[#A8D5B5] mb-2">
+            Auto-évaluation
+          </p>
+          <h2 className="text-2xl font-bold text-white text-center mb-1">
             Questions à te poser
           </h2>
-          <p className="text-center text-sm text-[#2D2D2D] mb-6">
-            En cas de doute, voici des questions à te poser...
+          <p className="text-center text-sm text-[#A8D5B5] mb-8">
+            En cas de doute sur ta relation…
           </p>
         </FadeIn>
 
-        {/* Barre de progression */}
-        <div className="w-full bg-[#A8D5B5] rounded-full h-2 mb-6">
-          <div
-            className="bg-[#3D6B4F] h-2 rounded-full transition-all duration-500"
-            style={{ width: `${progress}%` }}
-            role="progressbar"
-            aria-valuenow={progress}
-            aria-valuemin={0}
-            aria-valuemax={100}
-          />
-        </div>
-
         {!done ? (
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-[#A8D5B5] text-center">
-            <p className="text-xs text-[#5B8C6A] font-medium mb-3">
-              Question {current + 1} sur {questions.length}
-            </p>
-            <p className="text-xl font-semibold text-[#2D2D2D] mb-8 leading-snug">
-              {questions[current]}
-            </p>
-            <div className="flex gap-3">
-              <button
-                onClick={() => answer(true)}
-                className="flex-1 py-4 bg-[#4CAF50] text-white rounded-2xl font-bold text-lg hover:bg-green-600 transition-colors"
-              >
-                Oui
-              </button>
+          <FadeIn delay={100}>
+            {/* Indicateur question X/Y */}
+            <div className="flex items-center justify-between mb-4 px-1">
+              <span className="text-[#A8D5B5] text-xs font-medium">{current + 1} / {questions.length}</span>
+              <div className="flex gap-1.5">
+                {questions.map((_, i) => (
+                  <div
+                    key={i}
+                    className="rounded-full transition-all duration-300"
+                    style={{
+                      width: i === current ? 20 : 8,
+                      height: 8,
+                      backgroundColor: answers[i] === true
+                        ? '#4CAF50'
+                        : answers[i] === false
+                        ? '#A8D5B5'
+                        : i === current
+                        ? 'white'
+                        : 'rgba(255,255,255,0.2)',
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Carte question */}
+            <div
+              className="rounded-3xl p-8 mb-6 min-h-[200px] flex flex-col items-center justify-center text-center transition-all duration-300"
+              style={{
+                backgroundColor: 'rgba(255,255,255,0.08)',
+                border: '1px solid rgba(255,255,255,0.15)',
+                opacity: exiting ? 0 : 1,
+                transform: exiting ? 'scale(0.95)' : 'scale(1)',
+              }}
+            >
+              <span className="text-5xl mb-5">{questions[current].emoji}</span>
+              <p className="text-white text-xl font-semibold leading-snug">
+                {questions[current].text}
+              </p>
+            </div>
+
+            {/* Boutons */}
+            <div className="flex gap-4">
               <button
                 onClick={() => answer(false)}
-                className="flex-1 py-4 bg-[#5B8C6A] text-white rounded-2xl font-bold text-lg hover:bg-[#3D6B4F] transition-colors"
+                className="flex-1 flex flex-col items-center gap-2 py-5 rounded-3xl font-bold text-sm transition-all active:scale-95"
+                style={{ backgroundColor: 'rgba(255,255,255,0.1)', border: '1.5px solid rgba(255,255,255,0.2)', color: '#A8D5B5' }}
               >
+                <ThumbsDown size={22} />
                 Non
               </button>
+              <button
+                onClick={() => answer(true)}
+                className="flex-1 flex flex-col items-center gap-2 py-5 rounded-3xl font-bold text-sm bg-white text-[#3D6B4F] transition-all active:scale-95 shadow-lg"
+              >
+                <ThumbsUp size={22} />
+                Oui
+              </button>
             </div>
-          </div>
+          </FadeIn>
         ) : (
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-[#A8D5B5] text-center">
-            <div className="mb-6">
+          <FadeIn>
+            {/* Résultat */}
+            <div
+              className="rounded-3xl p-7 mb-5 text-center"
+              style={{ backgroundColor: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)' }}
+            >
+              {/* Score en grands chiffres */}
+              <div className="mb-5">
+                <span className="text-7xl font-black text-white">{score}</span>
+                <span className="text-2xl font-bold text-[#A8D5B5]"> / {questions.length}</span>
+              </div>
+
               {hasNon ? (
                 <>
-                  <p className="text-xl font-bold text-[#3D6B4F] mb-3">
-                    Tu mérites de te sentir bien dans ta relation.
-                  </p>
-                  <p className="text-[#2D2D2D] mb-5 text-base">
-                    Certaines de tes réponses pourraient indiquer des points d'attention. N'hésite pas à consulter les ressources disponibles — tu n'es pas seul·e.
+                  <p className="text-white font-bold text-lg mb-2">Tu mérites de te sentir bien.</p>
+                  <p className="text-[#A8D5B5] text-sm mb-5 leading-relaxed">
+                    Certaines réponses méritent attention. Tu n'es pas seul·e — des ressources sont là pour toi.
                   </p>
                   <a
                     href="#ressources"
-                    className="inline-block w-full bg-[#3D6B4F] text-white px-6 py-4 rounded-2xl font-bold text-base hover:bg-[#5B8C6A] transition-colors"
+                    className="inline-flex items-center gap-2 bg-white text-[#3D6B4F] px-6 py-3 rounded-2xl font-bold text-sm"
                   >
-                    Voir les ressources
+                    Voir les ressources <ArrowRight size={16} />
                   </a>
                 </>
               ) : (
                 <>
-                  <p className="text-xl font-bold text-[#3D6B4F] mb-3">
-                    C'est encourageant !
-                  </p>
-                  <p className="text-[#2D2D2D] text-base">
-                    Tes réponses semblent indiquer que tu te sens bien dans ta relation. Continue d'être à l'écoute de toi-même.
+                  <p className="text-white font-bold text-lg mb-2">C'est encourageant !</p>
+                  <p className="text-[#A8D5B5] text-sm leading-relaxed">
+                    Tes réponses semblent positives. Continue d'être à l'écoute de toi-même.
                   </p>
                 </>
               )}
             </div>
 
-            {/* Résumé */}
-            <div className="flex flex-wrap gap-2 justify-center mb-5">
+            {/* Mini résumé horizontal */}
+            <div className="flex gap-2 mb-5">
               {questions.map((q, i) => (
-                <span
+                <div
                   key={i}
-                  className={`px-3 py-1.5 rounded-full text-xs font-medium text-white ${
-                    answers[i] ? 'bg-[#4CAF50]' : 'bg-[#5B8C6A]'
-                  }`}
-                  title={q}
+                  title={q.text}
+                  className="flex-1 rounded-2xl py-3 flex flex-col items-center gap-1"
+                  style={{
+                    backgroundColor: answers[i] ? '#4CAF50' : 'rgba(255,255,255,0.15)',
+                  }}
                 >
-                  {i + 1}. {answers[i] ? 'Oui' : 'Non'}
-                </span>
+                  <span className="text-lg">{q.emoji}</span>
+                  <span className="text-xs font-bold text-white">{answers[i] ? '✓' : '–'}</span>
+                </div>
               ))}
             </div>
 
             <button
               onClick={reset}
-              className="text-sm text-[#5B8C6A] underline hover:text-[#3D6B4F]"
+              className="w-full flex items-center justify-center gap-2 py-3 rounded-2xl text-sm text-[#A8D5B5] transition-colors"
+              style={{ border: '1px solid rgba(255,255,255,0.2)' }}
             >
-              Recommencer
+              <RotateCcw size={14} /> Recommencer
             </button>
-          </div>
+          </FadeIn>
         )}
       </div>
     </section>
