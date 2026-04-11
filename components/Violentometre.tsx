@@ -100,6 +100,28 @@ export default function Violentometre() {
           </p>
         </FadeIn>
 
+        {/* Barre de progression */}
+        <FadeIn delay={80}>
+          <div className="relative h-3 rounded-full bg-white overflow-hidden mb-5 shadow-inner">
+            {/* Fond tricolore fixe */}
+            <div className="absolute inset-0 flex">
+              <div className="flex-1 bg-[#4CAF50]" />
+              <div className="flex-1 bg-[#F57C00]" />
+              <div className="flex-1 bg-[#D32F2F]" />
+            </div>
+            {/* Curseur qui se déplace */}
+            <div
+              className="absolute top-0 h-full w-1/3 transition-all duration-400 rounded-full"
+              style={{
+                left: activeZone === 'vert' ? '0%' : activeZone === 'orange' ? '33.33%' : '66.66%',
+                boxShadow: `0 0 0 2px white, 0 0 0 4px ${zone.color}`,
+                backgroundColor: zone.color,
+                opacity: 0.9,
+              }}
+            />
+          </div>
+        </FadeIn>
+
         {/* Tabs zones */}
         <FadeIn delay={100}>
         <div className="grid grid-cols-3 gap-2 mb-5">
