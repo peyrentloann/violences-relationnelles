@@ -6,6 +6,9 @@ export default function VoxPop() {
       <div className="max-w-xl mx-auto">
 
         <FadeIn className="text-center mb-8">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#5B8C6A] mb-3">
+            Témoignages
+          </p>
           <h2 className="text-5xl font-black text-[#3D6B4F] leading-none tracking-tight">
             VOX<br />
             <span className="text-[#A8D5B5] [-webkit-text-stroke:2px_#5B8C6A]">POP</span>
