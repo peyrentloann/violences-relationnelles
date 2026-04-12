@@ -59,7 +59,7 @@ export default function CycleViolence() {
       <div className="max-w-xl mx-auto">
         <FadeIn>
           <h2 className="text-2xl font-bold text-[#3D6B4F] text-center mb-2">
-            Le Cycle de la violence
+            Le cycle de la violence
           </h2>
           <p className="text-center text-sm text-[#2D2D2D] mb-6">
             Appuie sur chaque phase pour en savoir plus

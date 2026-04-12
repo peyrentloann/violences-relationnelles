@@ -37,7 +37,7 @@ const zones = [
     emoji: '🟢',
     label: 'Relation saine',
     title: 'Profite, ta relation est saine',
-    subtitle: 'quand il…',
+    subtitle: 'quand ton partenaire…',
     color: '#4CAF50',
     bg: 'bg-green-50',
     border: 'border-green-200',
@@ -93,7 +93,7 @@ export default function Violentometre() {
       <div className="max-w-xl mx-auto">
         <FadeIn>
           <h2 className="text-2xl font-bold text-[#3D6B4F] text-center mb-2">
-            Le Violentomètre
+            Le violentomètre
           </h2>
           <p className="text-center text-sm text-[#2D2D2D] mb-6">
             Sélectionne une zone pour explorer les comportements

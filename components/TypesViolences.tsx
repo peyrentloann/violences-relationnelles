@@ -9,7 +9,7 @@ const types = [
     icon: Swords,
     titre: 'Violence physique',
     description: 'Utilisation de la force pour blesser, contrôler ou intimider.',
-    caracterise: ['Pousser, frapper, gifler', 'Retenir ou immobiliser', 'Lancer des objets', 'Briser des affaires'],
+    caracterise: ['Pousser, frapper, gifler', 'Retenir ou immobiliser', 'Lancer des objets', 'Briser des objets'],
   },
   {
     icon: Brain,
@@ -33,7 +33,7 @@ const types = [
     icon: Zap,
     titre: 'Les micro-agressions',
     description: 'Comportements blessants, souvent banalisés, répétés dans le temps.',
-    caracterise: ["Blagues insultantes entre amis", "Commentaires déplacés sur l'apparence", "Gestes ou regards intimidants"],
+    caracterise: ["Blagues insultantes", "Commentaires déplacés sur l'apparence", "Gestes ou regards intimidants"],
   },
   {
     icon: Laptop,
