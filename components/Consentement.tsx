@@ -1,8 +1,43 @@
 'use client';
 
 import { useState } from 'react';
-import { Check, X, RotateCcw } from 'lucide-react';
+import { Check, X, RotateCcw, ChevronDown } from 'lucide-react';
 import FadeIn from './FadeIn';
+
+const typesConsentement = [
+  {
+    titre: 'Consentement clair',
+    texte: "L'accord doit être communiqué clairement, par des paroles, des gestes ou les deux. Le silence ou l'absence de résistance physique ne valent pas un consentement.",
+  },
+  {
+    titre: 'Consentement libre',
+    texte: "La personne doit donner son consentement librement, savoir à quoi elle consent, et ce pour chaque activité et en tout temps. Les partenaires doivent être pleinement en état de consentir — impossible en état d'intoxication ou de sommeil.",
+  },
+  {
+    titre: 'Consentement enthousiaste',
+    texte: "Il ne peut être obtenu à l'aide de menaces ou de chantage. Aucune pression ne doit être exercée. Les gestes doivent être une expression de désir et de plaisir.",
+  },
+  {
+    titre: 'Consentement sécuritaire',
+    texte: "L'accord doit être donné sans peur des représailles ou de la réaction de l'autre. Si le partenaire insiste, use de menaces ou de chantage pour obtenir un oui, ce n'est pas un consentement.",
+  },
+];
+
+function TypeConsentement({ titre, texte }: { titre: string; texte: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <button
+      onClick={() => setOpen(!open)}
+      className={`w-full text-left border rounded-2xl p-4 transition-all cursor-pointer ${open ? 'border-[#5B8C6A] bg-[#E8F5E9]' : 'border-[#A8D5B5] bg-white'}`}
+    >
+      <div className="flex items-center justify-between gap-3">
+        <span className="font-semibold text-[#3D6B4F] text-sm">{titre}</span>
+        <ChevronDown size={16} className={`text-[#5B8C6A] flex-shrink-0 transition-transform duration-300 ${open ? 'rotate-180' : ''}`} />
+      </div>
+      {open && <p className="text-sm text-[#2D2D2D] mt-3 leading-relaxed">{texte}</p>}
+    </button>
+  );
+}
 
 const criteres = [
   "Je n'ai pas peur des conséquences si je dis non.",
@@ -47,10 +82,26 @@ export default function Consentement() {
     <section id="consentement" className="py-14 px-4 bg-white">
       <div className="max-w-xl mx-auto">
         <FadeIn>
-          <h2 className="text-2xl font-bold text-[#3D6B4F] text-center mb-1">
+          <h2 className="text-2xl font-bold text-[#3D6B4F] text-center mb-3">
             Le Consentement
           </h2>
-          <p className="text-center text-sm text-[#5B8C6A] mb-6">
+          <p className="text-sm text-[#2D2D2D] text-center mb-6 leading-relaxed">
+            Le consentement sexuel est un accord <strong>clair et enthousiaste</strong> qu'une personne donne librement à son ou sa partenaire. Un consentement exprimé dans le passé n'est pas valide au présent — il doit être constant et peut être retiré à tout moment.
+          </p>
+
+          <div className="flex flex-col gap-2 mb-8">
+            {typesConsentement.map((t) => (
+              <TypeConsentement key={t.titre} titre={t.titre} texte={t.texte} />
+            ))}
+          </div>
+
+          <div className="bg-[#fff8ee] border border-[#eec068] rounded-2xl p-4 mb-8 text-sm text-[#2D2D2D] leading-relaxed">
+            <p className="font-bold text-[#3D6B4F] mb-1">Définition — Agression sexuelle</p>
+            <p>Une agression sexuelle est un geste à caractère sexuel, avec ou sans contact physique, commis sans le consentement de la personne visée. Il s'agit d'un acte visant à assujettir une autre personne à ses propres désirs par un abus de pouvoir, par l'utilisation de la force ou de la contrainte, ou sous la menace implicite ou explicite.</p>
+            <p className="mt-2 font-semibold text-[#5B8C6A]">Le consentement n'est pas valable s'il est donné par une personne âgée de moins de 16 ans ou en situation de dépendance.</p>
+          </div>
+
+          <p className="text-center text-sm text-[#5B8C6A] mb-6 font-medium">
             Mon consentement est présent quand…
           </p>
         </FadeIn>

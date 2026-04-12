@@ -10,6 +10,7 @@ import RelationsSaines from '@/components/RelationsSaines';
 import VoxPop from '@/components/VoxPop';
 import ControleCoercitif from '@/components/ControleCoercitif';
 import Ressources from '@/components/Ressources';
+import Sources from '@/components/Sources';
 import Footer from '@/components/Footer';
 
 export default function Page() {
@@ -28,6 +29,7 @@ export default function Page() {
         <VoxPop />
         <ControleCoercitif />
         <Ressources />
+        <Sources />
       </main>
       <Footer />
     </>

@@ -1,9 +1,16 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Brain, Swords, MessageSquare, HeartCrack, FileX, Wallet } from 'lucide-react';
 
-const keywords = ['Psychologique', 'Physique', 'Verbale', 'Sexuelle', 'Administrative', 'Économique'];
+const types = [
+  { icon: Brain, label: 'Psychologique' },
+  { icon: Swords, label: 'Physique' },
+  { icon: MessageSquare, label: 'Verbale' },
+  { icon: HeartCrack, label: 'Sexuelle' },
+  { icon: FileX, label: 'Administrative' },
+  { icon: Wallet, label: 'Économique' },
+];
 
 export default function Hero() {
   const [visible, setVisible] = useState(false);
@@ -40,18 +47,19 @@ export default function Hero() {
           Reconnais, comprends, agis. Un guide interactif pour mieux identifier les violences dans les relations.
         </p>
 
-        {/* Keywords */}
+        {/* Types de violences — grille icônes */}
         <div
-          className={`flex flex-wrap justify-center gap-2 mb-10 max-w-sm mx-auto transition-all duration-700 delay-300 ${visible ? 'opacity-100' : 'opacity-0'}`}
+          className={`grid grid-cols-3 gap-2 mb-10 max-w-xs mx-auto transition-all duration-700 delay-300 ${visible ? 'opacity-100' : 'opacity-0'}`}
         >
-          {keywords.map((kw, i) => (
-            <span
-              key={kw}
+          {types.map(({ icon: Icon, label }, i) => (
+            <div
+              key={label}
               style={{ transitionDelay: `${300 + i * 80}ms` }}
-              className={`bg-white/10 backdrop-blur-sm text-white border border-white/20 px-4 py-2 rounded-full text-sm font-medium transition-all duration-500 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}
+              className={`flex flex-col items-center gap-1.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl py-3 px-2 transition-all duration-500 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}
             >
-              {kw}
-            </span>
+              <Icon size={22} className="text-[#A8D5B5]" aria-hidden />
+              <span className="text-white text-xs font-medium leading-tight text-center">{label}</span>
+            </div>
           ))}
         </div>
 

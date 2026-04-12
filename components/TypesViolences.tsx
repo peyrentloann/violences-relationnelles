@@ -1,44 +1,51 @@
 'use client';
 
 import { useState } from 'react';
-import { Swords, Brain, AlertTriangle, HeartCrack, Zap, Laptop, FlaskConical } from 'lucide-react';
+import { Swords, Brain, AlertTriangle, HeartCrack, Zap, Laptop, FlaskConical, ChevronDown } from 'lucide-react';
 import FadeIn from './FadeIn';
 
 const types = [
   {
     icon: Swords,
     titre: 'Violence physique',
-    description: 'Blessures, coups, pousser, retenir, briser des objets',
+    description: 'Utilisation de la force pour blesser, contrôler ou intimider.',
+    caracterise: ['Pousser, frapper, gifler', 'Retenir ou immobiliser', 'Lancer des objets', 'Briser des affaires'],
   },
   {
     icon: Brain,
     titre: 'Violence psychologique',
-    description: 'Humiliation, manipulation, isolement, critiques constantes, chantage, rabaisser',
+    description: "Atteinte à l'estime de soi et à l'identité par des comportements répétés.",
+    caracterise: ['Humiliation et rabaissement', 'Manipulation et chantage émotionnel', 'Isolement social', 'Critiques constantes'],
   },
   {
     icon: AlertTriangle,
     titre: 'Violence verbale',
-    description: 'Cris, insultes, menaces',
+    description: 'Usage des mots pour blesser, menacer ou contrôler.',
+    caracterise: ["Cris et hurlements", "Insultes et noms d'oiseaux", "Menaces directes ou voilées"],
   },
   {
     icon: HeartCrack,
     titre: 'Violence sexuelle',
-    description: 'Pression, chantage, sans consentement',
+    description: 'Tout acte sexuel imposé sans consentement libre et éclairé.',
+    caracterise: ['Pression ou insistance répétée', 'Chantage affectif ou matériel', 'Actes sans consentement'],
   },
   {
     icon: Zap,
     titre: 'Les micro-agressions',
-    description: 'Comportements bref ou non, de manière répétés, blague entre amis...',
+    description: 'Comportements blessants, souvent banalisés, répétés dans le temps.',
+    caracterise: ["Blagues insultantes entre amis", "Commentaires déplacés sur l'apparence", "Gestes ou regards intimidants"],
   },
   {
     icon: Laptop,
     titre: 'Cyberviolence',
-    description: 'Messages excessifs, harcèlement, surveillance...',
+    description: 'Violences exercées via les écrans et les réseaux sociaux.',
+    caracterise: ["Messages excessifs ou harcelants", "Surveillance des comptes et appareils", "Harcèlement en ligne, diffusion d'images"],
   },
   {
     icon: FlaskConical,
     titre: 'Soumission chimique',
-    description: 'Usage de drogue contre la personne',
+    description: 'Administration de substances à une personne à son insu pour la contrôler.',
+    caracterise: ["Ajout de drogue ou d'alcool dans un verre", "Médicaments donnés sans consentement", "Objectif : réduire la capacité à résister"],
   },
 ];
 
@@ -72,12 +79,28 @@ export default function TypesViolences() {
                     <div className="p-2.5 bg-[#A8D5B5] rounded-xl flex-shrink-0">
                       <Icon size={20} className="text-[#3D6B4F]" aria-hidden />
                     </div>
-                    <h3 className="font-semibold text-[#3D6B4F] text-base">{type.titre}</h3>
+                    <h3 className="font-semibold text-[#3D6B4F] text-base flex-1">{type.titre}</h3>
+                    <ChevronDown
+                      size={18}
+                      className={`text-[#5B8C6A] flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                      aria-hidden
+                    />
                   </div>
                   {isOpen && (
-                    <p className="text-sm text-[#2D2D2D] mt-3 ml-12">
-                      {type.description}
-                    </p>
+                    <div className="mt-3 ml-12">
+                      <p className="text-sm text-[#2D2D2D] mb-2">{type.description}</p>
+                      <p className="text-xs font-semibold text-[#3D6B4F] uppercase tracking-wide mb-1.5">
+                        Se caractérise par :
+                      </p>
+                      <ul className="flex flex-col gap-1">
+                        {type.caracterise.map((item, j) => (
+                          <li key={j} className="flex items-start gap-2 text-sm text-[#2D2D2D]">
+                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#5B8C6A] flex-shrink-0" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   )}
                 </button>
               </FadeIn>

@@ -19,18 +19,11 @@ export default function VoxPop() {
         </FadeIn>
 
         <FadeIn delay={150}>
-          <div className="mx-auto w-full max-w-[280px]">
-            <div
-              className="relative w-full rounded-2xl overflow-hidden border-4 border-[#5B8C6A] shadow-[0_12px_40px_rgba(61,107,79,0.3)]"
-              style={{ paddingBottom: 'calc(16 / 9 * 100%)' }}
-            >
-              <video
-                className="absolute inset-0 w-full h-full object-cover"
-                src="/generated-video-1.mp4"
-                poster="/voxpop-poster.jpg"
-                controls
-                playsInline
-              />
+          <div className="mx-auto w-full max-w-[320px]">
+            <div className="rounded-3xl border-2 border-dashed border-[#A8D5B5] bg-[#E8F5E9] px-8 py-12 text-center">
+              <div className="text-4xl mb-4">🎙️</div>
+              <p className="text-[#3D6B4F] font-bold text-lg mb-2">Vox pop à venir</p>
+              <p className="text-sm text-[#5B8C6A]">Revenez nous voir le <span className="font-semibold text-[#3D6B4F]">20 avril</span> pour découvrir les témoignages de jeunes de notre école.</p>
             </div>
           </div>
         </FadeIn>
