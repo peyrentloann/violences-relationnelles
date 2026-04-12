@@ -6,7 +6,7 @@ export default function ControleCoercitif() {
       <div className="max-w-xl mx-auto">
         <div className="border-2 border-[#3D6B4F] rounded-2xl p-6 bg-[#E8F5E9]">
           <h2 className="text-xl font-bold text-[#3D6B4F] mb-3">
-            Le Contrôle Coercitif
+            Le Contrôle coercitif
           </h2>
           <p className="text-[#2D2D2D] text-base mb-5">
             Bien souvent, un des partenaires tente par plusieurs moyens et stratégies d'exercer une domination sur l'autre. Pour en savoir plus sur le contrôle coercitif et identifier les formes de pouvoir, tu peux visiter le site :

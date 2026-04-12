@@ -57,7 +57,7 @@ export default function TypesViolences() {
       <div className="max-w-5xl mx-auto">
         <FadeIn>
           <h2 className="text-2xl font-bold text-[#3D6B4F] text-center mb-8">
-            Types de Violences Relationnelles
+            Types de violences relationnelles
           </h2>
         </FadeIn>
         <div className="flex flex-col gap-3">

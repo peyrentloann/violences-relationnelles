@@ -7,23 +7,28 @@ import FadeIn from './FadeIn';
 const signes = [
   {
     titre: 'Manque de respect',
-    description: 'Insultes, rabaissement, moqueries. Tu ne te sens pas "assez" pour ton partenaire.',
+    description: 'Ton partenaire te rabaisse ou te fait sentir que tu n\'es pas à la hauteur.',
+    caracterise: ['Insultes et moqueries', 'Rabaissement répété', 'Tu ne te sens pas "assez" pour ton partenaire'],
   },
   {
     titre: 'Manipulation',
-    description: 'Le partenaire ne reconnaît pas ses torts et retourne les conflits contre toi. Il/elle te fait croire que "c\'est toi le problème".',
+    description: 'Ton partenaire retourne les situations à son avantage et te fait douter de toi.',
+    caracterise: ['Ne reconnaît jamais ses torts', 'Retourne les conflits contre toi', 'Te fait croire que "c\'est toi le problème"'],
   },
   {
     titre: 'Tous les types de violences relationnelles',
-    description: 'Peu importe le type de violence, si tu es victime de l\'une d\'entre elles, c\'est peut-être signe que tu es dans une relation malsaine.',
+    description: 'Peu importe le type de violence, en subir une est un signe que la relation est malsaine.',
+    caracterise: ['Violence physique, verbale ou psychologique', 'Cyberviolence ou soumission chimique', 'Même une seule forme suffit à alerter'],
   },
   {
     titre: 'Communication non libre',
-    description: 'Tu hésites à nommer tes ressentis à ton partenaire par peur qu\'il se fâche. Vous ne pouvez pas discuter ouvertement suite à un conflit pour régler les choses.',
+    description: 'Tu n\'oses pas t\'exprimer librement par peur de la réaction de ton partenaire.',
+    caracterise: ['Tu hésites à nommer tes ressentis', 'Peur que ton partenaire se fâche', 'Impossible de discuter après un conflit'],
   },
   {
     titre: 'Consentement brimé',
-    description: 'Ton partenaire ne respecte pas tes envies ou tu as tout simplement peur de signaler tes véritables envies.',
+    description: 'Ton partenaire ne respecte pas tes limites ou tu as peur d\'exprimer tes vraies envies.',
+    caracterise: ['Tes envies et refus ne sont pas respectés', 'Tu as peur de dire non', 'Pression sur tes choix personnels'],
   },
 ];
 
@@ -45,7 +50,7 @@ export default function RelationsMalsaines() {
       <div className="max-w-xl mx-auto">
         <FadeIn>
           <h2 className="text-2xl font-bold text-[#3D6B4F] text-center mb-8">
-            Relations Malsaines
+            Relations malsaines
           </h2>
         </FadeIn>
 
@@ -67,8 +72,17 @@ export default function RelationsMalsaines() {
                 />
               </button>
               {openIndex === i && (
-                <div className="px-5 pb-4 text-base text-[#2D2D2D] border-t border-[#E8F5E9]">
-                  <p className="pt-3">{signe.description}</p>
+                <div className="px-5 pb-4 text-sm text-[#2D2D2D] border-t border-[#E8F5E9]">
+                  <p className="pt-3 mb-2">{signe.description}</p>
+                  <p className="text-xs font-semibold text-[#3D6B4F] uppercase tracking-wide mb-1.5">Se caractérise par :</p>
+                  <ul className="flex flex-col gap-1">
+                    {signe.caracterise.map((item, j) => (
+                      <li key={j} className="flex items-start gap-2">
+                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#5B8C6A] flex-shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               )}
             </div>

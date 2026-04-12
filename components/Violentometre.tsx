@@ -179,10 +179,6 @@ export default function Violentometre() {
           })}
         </div>
 
-        {/* Compteur */}
-        <p className="text-center text-xs text-[#5B8C6A] mt-4">
-          {zoneItems.length} comportements dans cette zone
-        </p>
       </div>
     </section>
   );
