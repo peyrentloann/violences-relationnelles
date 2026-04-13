@@ -69,7 +69,7 @@ export default function CycleViolence() {
         {/* Diagramme SVG */}
         <FadeIn delay={150}>
           <div className="flex justify-center mb-6 overflow-visible">
-            <svg viewBox="0 0 360 360" className="w-full max-w-[320px]" overflow="visible" aria-label="Cycle de la violence">
+            <svg viewBox="0 0 360 360" className="w-full max-w-[420px]" overflow="visible" aria-label="Cycle de la violence">
               <defs>
                 {/* Marqueurs de flèche, un par couleur d'arc */}
                 {arcColors.map((color, i) => (
