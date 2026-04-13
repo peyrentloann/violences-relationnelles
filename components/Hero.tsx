@@ -39,8 +39,8 @@ export default function Hero() {
 
         {/* Titre */}
         <h1 className="text-4xl font-black text-white leading-tight mb-3">
-          Les Violences<br />
-          <span className="text-[#A8D5B5]">Relationnelles</span>
+          Les violences<br />
+          <span className="text-[#A8D5B5]">relationnelles</span>
         </h1>
 
         <p className="text-[#A8D5B5] text-base mb-10 max-w-xs mx-auto leading-relaxed">
