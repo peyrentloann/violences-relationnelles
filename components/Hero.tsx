@@ -33,23 +33,23 @@ export default function Hero() {
         className={`relative z-10 text-center transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
       >
         {/* Badge */}
-        <span className="inline-block bg-[#A8D5B5] text-[#2A5038] text-xs font-bold px-4 py-1.5 rounded-full mb-6 uppercase tracking-widest">
+        <span className="inline-block bg-[#A8D5B5] text-[#2A5038] text-xs font-bold px-4 py-1.5 rounded-full mb-4 uppercase tracking-widest">
           Projet de fin d'études
         </span>
 
         {/* Titre */}
-        <h1 className="text-4xl font-black text-white leading-tight mb-3">
+        <h1 className="text-4xl font-black text-white leading-tight mb-2">
           Les violences<br />
           <span className="text-[#A8D5B5]">relationnelles</span>
         </h1>
 
-        <p className="text-[#A8D5B5] text-base mb-10 max-w-xs mx-auto leading-relaxed">
+        <p className="text-[#A8D5B5] text-sm mb-6 max-w-xs mx-auto leading-relaxed">
           Reconnais, comprends, agis. Un guide interactif pour mieux identifier les violences dans les relations.
         </p>
 
         {/* Types de violences — grille icônes */}
         <div
-          className={`grid grid-cols-3 gap-2 mb-10 max-w-xs mx-auto transition-all duration-700 delay-300 ${visible ? 'opacity-100' : 'opacity-0'}`}
+          className={`grid grid-cols-3 gap-2 mb-6 max-w-xs mx-auto transition-all duration-700 delay-300 ${visible ? 'opacity-100' : 'opacity-0'}`}
         >
           {types.map(({ icon: Icon, label }, i) => (
             <div
