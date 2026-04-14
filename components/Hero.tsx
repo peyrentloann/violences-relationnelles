@@ -90,8 +90,8 @@ export default function Hero() {
       </div>
 
       {/* Vague du bas */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 375 40" preserveAspectRatio="none" className="w-full h-10 fill-white">
+      <div className="absolute bottom-0 left-0 right-0 translate-y-px">
+        <svg viewBox="0 0 375 40" preserveAspectRatio="none" className="w-full h-10 fill-white block">
           <path d="M0,40 C100,0 275,40 375,10 L375,40 Z" />
         </svg>
       </div>
