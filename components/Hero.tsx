@@ -1,15 +1,15 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { ChevronDown, Brain, Swords, MessageSquare, HeartCrack, FileX, Wallet, LifeBuoy } from 'lucide-react';
+import { ChevronDown, Brain, Swords, MessageSquare, HeartCrack, Wifi, FlaskConical, LifeBuoy } from 'lucide-react';
 
 const types = [
   { icon: Brain, label: 'Psychologique' },
   { icon: Swords, label: 'Physique' },
   { icon: MessageSquare, label: 'Verbale' },
   { icon: HeartCrack, label: 'Sexuelle' },
-  { icon: FileX, label: 'Administrative' },
-  { icon: Wallet, label: 'Économique' },
+  { icon: Wifi, label: 'Cyberviolence' },
+  { icon: FlaskConical, label: 'Soumission chimique' },
 ];
 
 export default function Hero() {
