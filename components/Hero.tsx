@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { ChevronDown, Brain, Swords, MessageSquare, HeartCrack, FileX, Wallet } from 'lucide-react';
+import { ChevronDown, Brain, Swords, MessageSquare, HeartCrack, FileX, Wallet, LifeBuoy } from 'lucide-react';
 
 const types = [
   { icon: Brain, label: 'Psychologique' },
@@ -63,20 +63,30 @@ export default function Hero() {
           ))}
         </div>
 
-        {/* CTA */}
-        <a
-          href="#types"
-          className="inline-flex flex-col items-center gap-2 group"
-        >
-          <span className="bg-white text-[#3D6B4F] px-10 py-4 rounded-full font-bold text-lg shadow-xl group-hover:bg-[#A8D5B5] transition-colors">
-            Explorer
-          </span>
-          <ChevronDown
-            size={20}
-            className="text-white/60 animate-bounce mt-1"
-            aria-hidden
-          />
-        </a>
+        {/* CTAs */}
+        <div className="flex flex-col items-center gap-3">
+          <a
+            href="#ressources"
+            className="inline-flex items-center gap-2 bg-[#A8D5B5] text-[#2A5038] px-8 py-4 rounded-full font-bold text-base shadow-xl hover:bg-white transition-colors"
+          >
+            <LifeBuoy size={20} aria-hidden />
+            Besoin d'aide ?
+          </a>
+
+          <a
+            href="#types"
+            className="inline-flex flex-col items-center gap-2 group"
+          >
+            <span className="bg-white/20 text-white border border-white/40 px-8 py-3 rounded-full font-semibold text-base hover:bg-white/30 transition-colors">
+              Explorer le site
+            </span>
+            <ChevronDown
+              size={20}
+              className="text-white/60 animate-bounce mt-1"
+              aria-hidden
+            />
+          </a>
+        </div>
       </div>
 
       {/* Vague du bas */}

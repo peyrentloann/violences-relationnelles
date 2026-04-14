@@ -12,10 +12,12 @@ import ControleCoercitif from '@/components/ControleCoercitif';
 import Ressources from '@/components/Ressources';
 import Sources from '@/components/Sources';
 import Footer from '@/components/Footer';
+import QuickExit from '@/components/QuickExit';
 
 export default function Page() {
   return (
     <>
+      <QuickExit />
       <Navbar />
       <main>
         <Hero />
