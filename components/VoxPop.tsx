@@ -16,12 +16,21 @@ export default function VoxPop() {
         </FadeIn>
 
         <FadeIn delay={150}>
-          <div className="mx-auto w-full max-w-[320px]">
-            <div className="rounded-3xl border-2 border-dashed border-[#A8D5B5] bg-[#E8F5E9] px-8 py-12 text-center">
-              <div className="text-4xl mb-4">🎙️</div>
-              <p className="text-[#3D6B4F] font-bold text-lg mb-2">Vox pop à venir</p>
-              <p className="text-sm text-[#5B8C6A]">Revenez nous voir le <span className="font-semibold text-[#3D6B4F]">20 avril</span> pour découvrir les témoignages de jeunes du Cégep de Granby.</p>
+          <div className="mx-auto w-full max-w-[360px]">
+            <div className="rounded-3xl overflow-hidden shadow-xl ring-1 ring-[#A8D5B5]/40 bg-black">
+              <video
+                className="w-full h-auto block"
+                controls
+                playsInline
+                preload="metadata"
+                poster="/voxpop-poster.jpg"
+              >
+                <source src="/videos/voxpop.mp4" type="video/mp4" />
+              </video>
             </div>
+            <p className="text-center text-sm text-[#5B8C6A] mt-4">
+              Témoignages des jeunes du <span className="font-semibold text-[#3D6B4F]">Cégep de Granby</span>
+            </p>
           </div>
         </FadeIn>
 
